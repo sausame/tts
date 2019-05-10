@@ -7,8 +7,8 @@
 <body>
 
   <div>
-    <input type="hidden" id="count" value="0" />
     <input type="hidden" id="lasttext" value="" />
+    <input type="hidden" id="lastcmd" value="" />
   </div>
   <div>
     <p>Language</p>
@@ -23,17 +23,19 @@
   </div>
 
   <div>
-    <p><textarea id="text" style="width:100%;" rows="10"></textarea></p>
-    <p><button id='doit' onclick="onClickButton(event)">Do it</button></p>
-    <p><textarea id="cmd" style="width:100%;" rows="10" readonly>#!/bin/sh</textarea></p>
+    <p><textarea id="text" style="width:100%;" rows="5"></textarea></p>
+    <p><button id='append' onclick="onClickButton(event)">Append it</button></p>
+    <p><button id='revert' onclick="onClickButton(event)">Revert last</button></p>
+    <p><button id='clear' onclick="onClickButton(event)">Clear all</button></p>
   </div>
 
-  <div>
-  </div>
+  <hr/>
 
   <div>
+    <p>Total: <input type="text" id="count" value="0" readonly /></p>
+    <p><textarea id="cmd" style="width:100%;" rows="5" readonly>#!/bin/sh</textarea></p>
     <form name="form1" method="post" action="tts.php" >
-      <p><textarea id="msg" name="msg" style="width:100%;" rows="10" readonly></textarea></p>
+      <p><textarea id="msg" name="msg" style="width:100%;display:none;" rows="10" readonly></textarea></p>
       <p><input type="hidden" id="now" name="now" value="" /></p>
       <p><input type="submit" value="save and run" /></p>
     </form>

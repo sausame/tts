@@ -68,7 +68,7 @@ function moveSelectedRadio(name) {
   }
 }
 
-function onClickButton(anEvent) {
+function append() {
 
   var text = document.getElementById('text').value;
   var lastText = document.getElementById('lasttext').value;
@@ -119,6 +119,7 @@ function onClickButton(anEvent) {
   var playerUrl = mainUrl + '&cache_flag=3';
 
   var cmd = document.getElementById('cmd').value;
+  document.getElementById('lastcmd').value = cmd;
 
   var interval = Math.floor((Math.random() * 5) + 5); 
   var now = dateFtt('yyyy-MM-dd', new Date());
@@ -139,5 +140,49 @@ function onClickButton(anEvent) {
   document.getElementById('now').value = now;
   // Just base64 again for security
   document.getElementById('msg').value = window.btoa(window.btoa(cmd));
+}
+
+function revert() {
+  var text = document.getElementById('lasttext').value;
+  if ('' == text) {
+    return;
+  }
+
+  document.getElementById('text').value = text;
+  document.getElementById('lasttext').value = '';
+
+  var cmd = document.getElementById('lastcmd').value;
+
+  document.getElementById('cmd').value = cmd;
+  document.getElementById('lastcmd').value = '';
+  document.getElementById('msg').value = window.btoa(window.btoa(cmd));
+
+  var count = parseInt(document.getElementById('count').value);
+  document.getElementById('count').value = '' + (count - 1);
+
+  moveSelectedRadio('gender');
+}
+
+function clearAll() {
+  document.getElementById('count').value = '0';
+  document.getElementById('now').value = '';
+  document.getElementById('text').value = '';
+  document.getElementById('lasttext').value = '';
+  document.getElementById('cmd').value = '#!/bin/sh';
+  document.getElementById('lastcmd').value = '';
+  document.getElementById('msg').value = '';
+}
+
+function onClickButton(anEvent) {
+
+  var id = anEvent.currentTarget.id;
+
+  if ('append' == id) {
+    append();
+  } else if ('revert' == id) {
+    revert();
+  } else if ('clear' == id) {
+    clearAll();
+  }
 }
 
