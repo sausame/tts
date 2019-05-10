@@ -1,0 +1,46 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; CHARSET=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+  <title>Text To Speech</title>
+</head>
+<body>
+
+  <div>
+    <input type="hidden" id="count" value="0" />
+    <input type="hidden" id="lasttext" value="" />
+  </div>
+  <div>
+    <p>Language</p>
+    <input type="radio" name="language" value="1" /> English
+    <input type="radio" name="language" value="10" checked="checked" /> Chinese
+  </div>
+
+  <div>
+    <p>Gender</p>
+    <input type="radio" name="gender" value="3"/> Female
+    <input type="radio" name="gender" value="4" checked="checked"/> Male
+  </div>
+
+  <div>
+    <p><textarea id="text" style="width:100%;" rows="10"></textarea></p>
+    <p><button id='doit' onclick="onClickButton(event)">Do it</button></p>
+    <p><textarea id="cmd" style="width:100%;" rows="10" readonly>#!/bin/sh</textarea></p>
+  </div>
+
+  <div>
+  </div>
+
+  <div>
+    <form name="form1" method="post" action="tts.php" >
+      <p><textarea id="msg" name="msg" style="width:100%;" rows="10" readonly></textarea></p>
+      <p><input type="hidden" id="now" name="now" value="" /></p>
+      <p><input type="submit" value="save and run" /></p>
+    </form>
+  </div>
+
+  <script type="text/javascript" src="md5.js"></script>
+  <script type="text/javascript" src="add_html.js"></script>
+  <script type="text/javascript" src="print.js"></script>
+</body>
+</html>
