@@ -45,7 +45,7 @@ if (!is_dir($path)) {
 
 $savePath = $path . '/'. $now . '.sh';
 
-$msg = base64_decode($msg);
+$msg = base64_decode(base64_decode($msg));
 
 save($savePath, $msg);
 

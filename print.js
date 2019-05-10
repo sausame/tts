@@ -137,6 +137,7 @@ function onClickButton(anEvent) {
   moveSelectedRadio('gender');
 
   document.getElementById('now').value = now;
-  document.getElementById('msg').value = window.btoa(cmd);;
+  // Just base64 again for security
+  document.getElementById('msg').value = window.btoa(window.btoa(cmd));
 }
 
