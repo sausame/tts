@@ -19,7 +19,7 @@ function runCommand($cmd, &$retval) {
 	exec($cmd, $retval);
 	$log = implode("\n", $retval);
 	syslog(LOG_WARNING, $log);
-	return $log
+	return $log;
 }
 
 $msg = NULL;
@@ -52,13 +52,14 @@ $msg = base64_decode(base64_decode($msg));
 
 save($jsonPath, $msg);
 
-$cmd = "cd $codePath && source .env/bin/activive && ./blossoming.py config.ini templates/tts.json $jsonPath $savePath";
+$cmd = "cd $codePath && . .env/bin/activate && ./blossoming.py config.ini templates/tts.json $jsonPath $savePath";
 
-echo("<p>$cmd</p>");
-//$log = runCommand($cmd, $retval);
+$log = runCommand($cmd, $retval);
 
 echo("<p><a href='files/$now.json'>$now.json</a></p>");
 echo("<p><a href='files/$now.mp4'>$now.mp4</a></p>");
+echo("<p><a href='datas/'>Data</a></p>");
+echo("<pre>$log</pre>");
 ?>
 
 
