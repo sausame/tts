@@ -2,64 +2,57 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; CHARSET=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+  <link rel="stylesheet" href="css/style.css" />
   <title>Text To Video</title>
 </head>
 <body>
 
   <div id='container'>
 
-  <div>
-    <p>Coding</p>
-    <input type="radio" name="coding" value="plate"/> Plate
-    <input type="radio" name="coding" value="base64" checked="checked"/> Base64
-  </div>
+  <div><h1>Text To Video</h1></div>
 
   <div>
-    <p>Language</p>
-    <input type="radio" name="language" value="english" checked="checked"/> English
-    <input type="radio" name="language" value="chinese"/> Chinese
+    <p><h2>Coding</h2></p>
+    <p><input type="radio" name="coding" value="plate"/> Plate <p>
+    <p><input type="radio" name="coding" value="base64" checked="checked"/> Base64 </p>
   </div>
 
   <div>
-    Video:</br>
-    <p>Background Url:<input type="text" id="background" value=""/></p>
-    <p>Width:<input type="text" id="width" value="1280"/></p>
-    <p>Height:<input type="text" id="height" value="720"/></p>
+    <p><h2>Language</h2></p>
+    <p><input type="radio" name="language" value="english" checked="checked"/> English </p>
+    <p><input type="radio" name="language" value="chinese"/> Chinese </p>
   </div>
 
   <div>
-    Logo:</br>
-    <p>Logo Url:<input type="text" id="logoUrl" value=""/></p>
-    <p>Width:<input type="text" id="logoWidth" value="128"/></p>
-    <p>Height:<input type="text" id="logoHeight" value="36"/></p>
+    <p><h2>Background</h2></p>
+    <p><img id="backgroundImage" style="width:100%;"></img></p>
+    <p>Image:<input type="text" id="background" value="" placeholder="https://"/></p>
+    <p>Width:<input type="text" id="width" value="" placeholder="1280" /></p>
+    <p>Height:<input type="text" id="height" value="" placeholder="720" /></p>
   </div>
 
   <div>
-    <p>Font Url:<input type="text" id="fontUrl" value=""/></p>
+    <p><h2>Logo</h2></p>
+    <p><img id="logoImage" style="width:100%;"></img></p>
+    <p>Image:<input type="text" id="logoUrl" value="" placeholder="https://" /></p>
+    <p>Width:<input type="text" id="logoWidth" value="" placeholder="128" /></p>
+    <p>Height:<input type="text" id="logoHeight" value="" placeholder="36" /></p>
   </div>
-
-  <hr/>
-
-  <div id="content_0">
-    Content 1:</br>
-    <p>Name:<input type="text" id="content_0_name" value=""/></p>
-	<p>Image List:</p>
-    <p>NO.1:<input type="text" id="content_0_imageUrl_0" value=""/></p>
-	<button id="content_0_addImage" onclick="addImage(0, 1)">Add Image</button>
-    <p><textarea id="content_0_text" style="width:100%;" rows="5"></textarea></p>
-  </div>
-
-  <button id='addContent' onclick="addContent(1)">Add Content</button>
-
-  </div>
-
-  <hr/>
 
   <div>
-    <p>Total: <input type="text" id="count" value="0" readonly /></p>
-    <p><textarea id="msg" style="width:100%;" rows="5" readonly></textarea></p>
-    <form name="form1" method="post" action="tts.php" >
-      <p><textarea id="msg" name="msg" style="width:100%;display:none;" rows="10" readonly></textarea></p>
+    <p><h2>Font</h2></p>
+    <p>Path:<input type="text" id="fontUrl" value="" placeholder="https://" /></p>
+  </div>
+
+  <button id='addContent' onclick="addContent(0)">Add Content</button>
+  <button id='createRequest' onclick="createRequest()">Create Request</button>
+
+  </div>
+
+  <div>
+    <p><textarea id="request" style="width:100%;" rows="5" readonly></textarea></p>
+    <form name="form1" method="post" action="ttv.php" >
+      <p><input type="hidden" id="msg" name="msg" value="" /></p>
       <p><input type="submit" value="Run" /></p>
     </form>
   </div>
