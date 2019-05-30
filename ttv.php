@@ -52,13 +52,16 @@ $msg = base64_decode(base64_decode($msg));
 
 save($jsonPath, $msg);
 
-$cmd = "cd $codePath && . .env/bin/activate && ./blossoming.py config.ini templates/tts.json $jsonPath $savePath";
+putenv("PYTHONIOENCODING=utf-8");
+
+$cmd = "cd $codePath && . .env/bin/activate && LANG=en_US.UTF-8 PYTHONIOENCODING=utf-8 python blossoming.py config.ini templates/tts.json $jsonPath $savePath";
 
 $log = runCommand($cmd, $retval);
 
 echo("<p><a href='files/$now.json'>$now.json</a></p>");
 echo("<p><a href='files/$now.mp4'>$now.mp4</a></p>");
 echo("<p><a href='datas/'>Data</a></p>");
+echo("<p>$cmd</p>");
 echo("<pre>$log</pre>");
 ?>
 
