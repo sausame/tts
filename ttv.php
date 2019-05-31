@@ -1,3 +1,14 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; CHARSET=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>Text To Video</title>
+</head>
+<body>
+
+  <div id='container'>
+
 <?php
 
 function save($path, $data) {
@@ -58,11 +69,15 @@ $cmd = "cd $codePath && . .env/bin/activate && LANG=en_US.UTF-8 PYTHONIOENCODING
 
 $log = runCommand($cmd, $retval);
 
-echo("<p><a href='files/$now.json'>$now.json</a></p>");
-echo("<p><a href='files/$now.mp4'>$now.mp4</a></p>");
-echo("<p><a href='datas/'>Data</a></p>");
-echo("<p>$cmd</p>");
-echo("<pre>$log</pre>");
+if (file_exists($savePath)) {
+	echo("<video controls=''><source src='files/$now.mp4' type='video/mp4'>Your browser does not support the video tag.</video>");
+} else {
+	echo("<p><a href='datas/'>Data</a></p>");
+	echo("<p>$cmd</p>");
+	echo("<pre>$log</pre>");
+}
 ?>
-
+  </div>
+</body>
+</html>
 
